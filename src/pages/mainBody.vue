@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import viewPager from "@/components/viewPager";
+import viewPager from "@/components/viewpager";
 import imgWall from "@/components/imgwall";
 import chatRoom from "@/components/chatroom";
 
