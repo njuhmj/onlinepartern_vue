@@ -93,6 +93,11 @@ export default {
       this.input_msg = "";
     },
     showMsg(msg) {
+      if (msg.type == "notify_history_msg"){
+        this.$store.commit("newMsg",JSON.stringify(msg));
+        return ;
+      }
+      if (msg.type != "groupmsg") return;
       var item =  {
         phone:msg.from,
         time:msg.time,
@@ -155,8 +160,9 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .e-main {
+  text-align: center;
   height: 500px;
   margin-left: 100px;
   margin-right: 100px;

@@ -12,6 +12,10 @@
         <el-form-item label="密码 : " :label-width="userLabelWidth" prop="password">
           <el-input v-model="user.password" show-password></el-input>
         </el-form-item>
+        <!-- <el-form-item label="验证码 : " :label-width="userLabelWidth" prop="validCode">
+          <el-input v-model="user.validCode" ></el-input>
+          <img :src="validImgUrl"/>
+        </el-form-item> -->
         <el-link class="l-toreg" type="primary" @click="toRegister">还没有账号? 点击注册</el-link>
         <el-form-item class="dialog-footer">
           <el-button type="primary" @click="login">确 定</el-button>
@@ -32,7 +36,8 @@ export default {
       userLabelWidth: "100px",
       user: {
         phone: "",
-        password: ""
+        password: "",
+        validCode: "",
       },
       rules: {
         phone: [
@@ -44,7 +49,8 @@ export default {
           { validator: validate.isPasswd, trigger: "blur" }
         ]
       },
-      validImgUrl: ""
+      validImgUrl: "",
+      validCode: ""
     };
   },
   methods: {
@@ -82,25 +88,18 @@ export default {
     getValidCode() {
       var _this = this;
       http
-        .fetchGet("/tool/getValidCode")
+        .fetchGetImg("/tool/getValidCode")
         .then(res => {
-          return (
-            "data:image/png;base64," +
-            btoa(
-              new Uint8Array(res.data).reduce(
-                (data, byte) => data + String.fromCharCode(byte),
-                ""
-              )
-            )
-          );
-        })
-        .then(data => {
-          _this.validImgUrl = data; //图片地址 <img src='data' />
-        });
+              this.validImgUrl = res.data;
+         
+            })
     },
     encode(str) {
       return this.$md5(str);
     }
+  },
+  mounted() {
+    //this.getValidCode();
   }
 };
 </script>

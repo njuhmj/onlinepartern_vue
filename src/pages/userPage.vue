@@ -45,19 +45,23 @@ export default {
         .fetchPost("/user/getFansAndConcernListById", { phone: this.phone })
         .then(data => {
           console.log(data);
-          this.parseData(data.data);
+          this.parseConcernAndFansList(data.data);
         })
         .catch(err => console.log(err));
     },
-    parseData(data) {
+    parseConcernAndFansList(data) {
       if (data.header.code == 101) {
         var userList = data.body.data;
-        this.$refs.fansRef.userlist = userList.filter(
+        var fanslist = userList.filter(
           user => user.state == 2 || user.state == 3
         );
-        this.$refs.concernRef.userlist = userList.filter(
+        this.$refs.fansRef.userlist = fanslist;
+        this.$store.state.my_fans_list = fanslist
+        var concernlist = userList.filter(
           user => user.state == 1 || user.state == 3
         );
+        this.$refs.concernRef.userlist = concernlist;
+        this.$store.state.my_concern_list = concernlist;
       } else {
         this.$message({
           type: "error",
@@ -105,5 +109,6 @@ export default {
   margin-left: 100px;
   margin-right: 100px;
   height: 100%;
+  width: 80%;
 }
 </style>

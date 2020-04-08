@@ -9,7 +9,7 @@
     </div>-->
     <div class="d-form">
       <el-card class="box-card">
-        <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="e-form">
+        <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-position="right" label-width="100px" class="e-form">
           <el-form-item label="手机号码" prop="phone">
             <el-input v-model="ruleForm.phone"></el-input>
           </el-form-item>
@@ -51,7 +51,7 @@
             </el-col>
           </el-form-item> -->
 
-          <el-form-item label="学历" prop="educate">
+          <el-form-item label="学历" prop="educate" >
             <el-select v-model="ruleForm.educate" placeholder="请选择">
               <el-option
                 v-for="item in eduoptions"
@@ -252,7 +252,7 @@ export default {
           income: this.ruleForm.income,
           addr: this.ruleForm.addr,
           height: this.ruleForm.height,
-          img: this.$refs.imgRef.imageUrl,
+          img: this.$refs.imgRef.imgUrl,
           marrage: this.ruleForm.marrage,
           sex: this.ruleForm.sex,
           birthday: this.ruleForm.birthday,
@@ -306,12 +306,8 @@ export default {
   margin-left: 25%;
   margin-right: 25%;
 }
-/* #d-step {
-  order: 1;
-} */
-#d-form {
-  order: 2;
-}
+
+
 .e-form {
   padding-top: 10%;
   padding-left: 5%;

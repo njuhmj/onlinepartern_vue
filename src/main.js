@@ -10,6 +10,7 @@ import QS from 'qs'
 import md5 from 'js-md5';
 import dateFormat from "@/utils/dateFormat"
 import vGallery from 'v-gallery'
+import store from './store'
 
 Vue.prototype.qs = QS;
 Vue.prototype.$axios = axios;
@@ -30,6 +31,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

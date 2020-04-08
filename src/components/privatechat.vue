@@ -200,6 +200,7 @@ export default {
           this.$websocket = new WebSocket(
             this.$websocketPath + "?" + user.phone
           );
+          console.log("private create")
         }
         this.ws = this.$websocket;
       }
@@ -233,7 +234,6 @@ export default {
       this.updateMsgBox(this.user_list[index], index);
     },
     scrollToBottom() {
-      console.log("0---");
       this.$nextTick(() => {
         var container = this.$el.querySelector(".d-msg-show");
         container.scrollTop = container.scrollHeight;
@@ -250,13 +250,14 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .e-main {
   height: 550px;
   margin-left: 100px;
   margin-right: 100px;
   background-color: antiquewhite;
   margin-bottom: 50px;
+  text-align: center;
 }
 .main {
   display: flex;

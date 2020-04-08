@@ -42,16 +42,16 @@ export default {
     return {
       activeIndex: "0",
       userlist: [
-        {
-          phone: "18888888888",
-          nick: "西瓜",
-          state: 3
-        },
-        {
-          phone: "18888888888",
-          nick: "冬瓜",
-          state: 0
-        }
+        // {
+        //   phone: "18888888888",
+        //   nick: "西瓜",
+        //   state: 3
+        // },
+        // {
+        //   phone: "18888888888",
+        //   nick: "冬瓜",
+        //   state: 0
+        // }
       ]
     };
   },

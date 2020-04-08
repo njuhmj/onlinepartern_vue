@@ -15,7 +15,7 @@
         </el-menu-item>
         <el-menu-item index="/" @click="getUsers">首页</el-menu-item>
         <el-menu-item index="/my">我的</el-menu-item>
-        <el-menu-item index="/userMain">搜索</el-menu-item>
+        <!-- <el-menu-item index="/userMain">搜索</el-menu-item> -->
         <el-menu-item index="/blinddate">相亲</el-menu-item>
       </el-menu>
     </div>
@@ -34,12 +34,16 @@
       <el-menu class="t-el-menu" mode="horizontal" @select="mySelect">
         <el-submenu index="0" v-if="user_nick!=null&&user_nick!=''" class="emi-user-img">
           <template slot="title">
-            <el-badge is-dot class="item">
+            <el-badge :value="newMsg" class="item">
               <el-avatar :size="50">{{user_nick}}</el-avatar>
             </el-badge>
           </template>
           <el-menu-item index="/myPage">我的主页</el-menu-item>
           <el-menu-item index="/showLike">点赞通知</el-menu-item>
+          <el-menu-item index="/myMsg">
+          我的消息
+          <el-badge :value="newMsg" visibility="newMsg==0?visible:hidden" class="item"></el-badge>
+          </el-menu-item>
           <el-menu-item index="/logout">注销登陆</el-menu-item>
         </el-submenu>
         <el-menu-item index="1" @click="login()" v-else>登陆</el-menu-item>
@@ -89,12 +93,18 @@ export default {
     search() {
       console.log(this.searchText);
     },
+    showMyMsg(){
+      this.$router.push("/my");
+    },
     //我的信息下拉栏选择
     mySelect(index){
       switch(index){
         case "/myPage":
           break;
         case "/showLike":
+          break;
+        case "/myMsg":
+          this.showMyMsg();
           break;
         case "/logout":
           this.logout();
@@ -109,6 +119,12 @@ export default {
   },
   mounted() {
     this.init();
+  },
+  computed: {
+    newMsg () {
+      if(this.$store.state.my_unchecked_msg==null) return 0;
+      return this.$store.state.my_unchecked_msg.payload.object.length;
+    }
   }
 };
 </script>

@@ -6,6 +6,7 @@ import userPage from '@/pages/userPage'
 import login from '@/pages/login'
 import userMain from '@/pages/userMain'
 import phtotAlbum from '@/components/photoalbum'
+import activityDetail from '@/pages/activityDetail'
 
 Vue.use(Router)
 
@@ -43,6 +44,10 @@ export default new Router({
       path: '/userMain',
       name: 'userMain',
       component: userMain
+    },{
+      path: '/activityDetail',
+      name: 'activityDetail',
+      component: activityDetail
     }
     
   ]
