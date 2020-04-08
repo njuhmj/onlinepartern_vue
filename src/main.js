@@ -15,8 +15,8 @@ import store from './store'
 Vue.prototype.qs = QS;
 Vue.prototype.$axios = axios;
 Vue.prototype.$md5 = md5;
-Vue.prototype.$serverPath = "http://localhost:8080/api";
-Vue.prototype.$websocketPath = "ws://localhost:8080/api/chat"
+Vue.prototype.$serverPath = "http://172.19.241.1:8080/api";
+Vue.prototype.$websocketPath = "ws://172.17.241.1:8080/api/chat"
 Vue.prototype.$websocket = null;
 Date.prototype.Format = dateFormat.formatDate;
 
